@@ -1,3 +1,1 @@
 Documentation/
-terraform/*
-!terraform/terraform_scripts/ec2_creation.tf
