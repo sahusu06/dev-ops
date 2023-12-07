@@ -78,7 +78,7 @@ resource "aws_security_group" "devops_sc" {
 
 # Define a list of instance names
 variable "instance_names" {
-  default = ["Jenkins master", "Build node", "Ansible node"]
+  default = ["Jenkins master", "Jenkins slave", "Ansible node"]
 }
 
 # Create an EC2 instance within the public subnet
