@@ -1,0 +1,14 @@
+
+[jenkins-master]
+10.0.0.253
+
+[jenkins-master:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/opt/mumbai.pem
+
+[jenkins-slave]
+10.0.0.139
+
+[jenkins-slave:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/opt/mumbai.pem

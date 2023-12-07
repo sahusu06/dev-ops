@@ -1,0 +1,25 @@
+---
+- name: Download and Install Apache Maven
+  hosts: jenkins-slave
+  become: yes  # Run tasks as a privileged user (e.g., sudo)
+
+  vars:
+    maven_version: 3.9.6  # Change the version as needed
+
+  tasks:
+    - name: Create /opt directory if not exists
+      file:
+        path: /opt
+        state: directory
+
+    - name: Download Apache Maven
+      get_url:
+        url: "https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz"
+        dest: /opt/apache-maven-3.9.6-bin.tar.gz
+
+    - name: Unarchive Apache Maven
+      ansible.builtin.unarchive:
+        src: /opt/apache-maven-3.9.6-bin.tar.gz
+        dest: /opt
+        remote_src: yes
+        creates: /opt/maven

@@ -76,8 +76,15 @@ resource "aws_security_group" "devops_sc" {
   }
 }
 
+# Define a list of instance names
+variable "instance_names" {
+  default = ["Jenkins master", "Build node", "Ansible node"]
+}
+
 # Create an EC2 instance within the public subnet
 resource "aws_instance" "example" {
+
+  count = length(var.instance_names)
   ami           = "ami-0a7cf821b91bcccbc"  # Amazon Linux 2 AMI (replace with your desired AMI)
   instance_type = "t2.micro"               # Instance type (you can change it as needed)
   subnet_id     = aws_subnet.devops_public_subnet.id   # Specify the public subnet for the instance
@@ -86,6 +93,6 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = [aws_security_group.devops_sc.id]
 
   tags = {
-    Name = "example-instance"
+    Name = var.instance_names[count.index]
   }
 }
