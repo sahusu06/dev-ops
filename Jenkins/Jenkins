@@ -1,0 +1,34 @@
+pipeline {
+    agent {
+        label 'Jenkins_Slave' // Replace with the label of your Jenkins slave
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from the GitHub repository
+                git branch: 'main', url: 'https://github.com/sahusu06/tweet-trend-new.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Run Maven build (mvn install)
+                withMaven(maven: 'MAVEN_HOME')
+                {
+                    sh 'mvn clean package'
+                    
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build successful! You can add more post-build actions here.'
+        }
+        failure {
+            echo 'Build failed! You can add more post-build actions for failure handling.'
+        }
+    }
+}
