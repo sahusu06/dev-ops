@@ -3,6 +3,10 @@ pipeline {
         label 'Jenkins_Slave' // Replace with the label of your Jenkins slave
     }
 
+    environment {
+        SONARQUBE_SCANNER_HOME = 'SonarQube' // Replace with the actual path to your SonarQube Scanner installation on the Jenkins slave
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -18,6 +22,15 @@ pipeline {
                 {
                     sh 'mvn clean package'
                     
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv('SONAR_TOKEN') {
+                        sh "${env.SONARQUBE_SCANNER_HOME}/bin/sonar-scanner"
+                    }
                 }
             }
         }
