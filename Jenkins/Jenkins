@@ -4,7 +4,7 @@ pipeline {
     }
 
     environment {
-        SONARQUBE_SCANNER_HOME = 'SonarQube' // Replace with the actual path to your SonarQube Scanner installation on the Jenkins slave
+        SONARQUBE_SCANNER_HOME = tool 'SonarQube' // Replace with the actual path to your SonarQube Scanner installation on the Jenkins slave
     }
 
     stages {
