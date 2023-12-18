@@ -1,3 +1,5 @@
+
+ def registry = 'https://sumitsscet.jfrog.io'
 pipeline {
     agent {
         label 'Jenkins_Slave' // Replace with the label of your Jenkins slave
@@ -7,7 +9,7 @@ pipeline {
         SONARQUBE_SCANNER_HOME = tool 'SonarQube' // Replace with the actual path to your SonarQube Scanner installation on the Jenkins slave
     }
 
-    def registry = 'https://sumitsscet.jfrog.io'
+   
 
     stages {
         stage('Checkout') {
