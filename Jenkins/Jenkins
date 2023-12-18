@@ -48,8 +48,8 @@ pipeline {
                          def uploadSpec = """{
                               "files": [
                                 {
-                                  "pattern": "jarstaging/(*)",
-                                  "target": "maven-libs-release-local/",
+                                  "pattern": "target/(*)",
+                                  "target": "maven-libs-release-local/{1}",
                                   "flat": "false",
                                   "props" : "${properties}",
                                   "exclusions": [ "*.sha1", "*.md5"]
