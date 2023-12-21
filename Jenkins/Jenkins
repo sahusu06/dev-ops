@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout code from the GitHub repository
-                git branch: 'main', url: 'https://github.com/sahusu06/tweet-trend-new.git'
+                git branch: 'main', url: 'https://github.com/sahusu06/tweet-trend.git'
             }
         }
 
