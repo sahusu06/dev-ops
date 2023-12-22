@@ -1,7 +1,7 @@
 
 def registry = 'https://sumitsscet.jfrog.io'
 def imageName = 'sumitsscet.jfrog.io/sumitsscet-docker-lo-docker/ttrend'
-def version   = '2.1.4'
+def version   = '2.1.5'
 pipeline {
     agent {
         label 'Jenkins_Slave' // Replace with the label of your Jenkins slave
